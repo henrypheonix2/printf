@@ -23,10 +23,12 @@ int _printf(const char *format, ...)
 	char cur_c;
 	va_list ap;
 
+	if (format == NULL || (_strlen(format) == 1 && format[0] == '%'))
+		return (-1);
 	va_start(ap, format);
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			if (format[i + 1] == 'c')
 			{
