@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			{
 				arg_c = va_arg(ap, int);
 				write(STDOUT_FILENO, &arg_c, 1);
-				n_chars--;
+				n_chars -= 2;
 				i++;
 			}
 			else if (format[i + 1] == 's')
