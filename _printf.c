@@ -17,8 +17,8 @@ int _printf(const char *format, ...)
 {
 	char *arg_s;
 	char arg_c;
-	unsigned int arg_len = 0;
-	unsigned int i = 0;
+	int arg_len = 0;
+	int i = 0;
 	ssize_t n_chars = 0;
 	char cur_c;
 	va_list ap;
@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 			{
 				arg_s = va_arg(ap, char*);
 				arg_len = _strlen(arg_s);
-				if (arg_len > 0)
+				if (arg_len >= 0)
 					n_chars += write(STDOUT_FILENO, arg_s, arg_len);
 				else
 					n_chars += write(STDOUT_FILENO, "(null)", 6);
