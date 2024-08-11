@@ -14,6 +14,10 @@ int _strlen(const char *str)
 	unsigned int i = 0;
 	int len = 0;
 
+	if (str == NULL || str[i] == '\0')
+	{
+		return (0);
+	}
 	while (str[i] !='\0')
 	{
 		len++;

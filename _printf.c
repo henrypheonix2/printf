@@ -38,7 +38,10 @@ int _printf(const char *format, ...)
 			{
 				arg_s = va_arg(ap, char*);
 				arg_len = _strlen(arg_s);
-				n_chars += write(STDOUT_FILENO, arg_s, arg_len);
+				if (arg_len > 0)
+					n_chars += write(STDOUT_FILENO, arg_s, arg_len);
+				else
+					n_chars += write(STDOUT_FILENO, "(null)", 6);
 				i++;
 			}
 		}
