@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	char arg_c;
 	unsigned int arg_len = 0;
 	unsigned int i = 0;
-	int n_chars = 0;
+	ssize_t n_chars = 0;
 	char cur_c;
 	va_list ap;
 
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			if (format[i + 1] == 'c')
 			{
 				arg_c = va_arg(ap, int);
-				write(STDOUT_FILENO, &arg_c, 1);
+				n_chars += write(STDOUT_FILENO, &arg_c, 1);
 				n_chars -= 2;
 				i++;
 			}
@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 			{
 				arg_s = va_arg(ap, char*);
 				arg_len = _strlen(arg_s);
-				write(STDOUT_FILENO, arg_s, arg_len);
+				n_chars += write(STDOUT_FILENO, arg_s, arg_len);
 				n_chars += arg_len - 2;
 				i++;
 			}
@@ -47,11 +47,11 @@ int _printf(const char *format, ...)
 		else
 		{
 			cur_c = format[i];
-			write(STDOUT_FILENO, &cur_c, 1);
+			n_chars += write(STDOUT_FILENO, &cur_c, 1);
 		}
-		n_chars++;
 		i++;
 	}
 	va_end(ap);
+	fflush(stdout);
 	return (n_chars);
 }
