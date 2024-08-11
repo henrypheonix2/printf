@@ -44,6 +44,11 @@ int _printf(const char *format, ...)
 					n_chars += write(STDOUT_FILENO, "(null)", 6);
 				i++;
 			}
+			else if (format[i + 1] == '%')
+			{
+				n_chars += write(STDOUT_FILENO, "%", 1);
+				i++;
+			}
 			else
 			{
 				n_chars += write(STDOUT_FILENO, &format[i], 2);
