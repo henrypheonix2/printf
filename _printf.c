@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				n_chars += write(STDOUT_FILENO, &format[i + 1], 1);
+				n_chars += write(STDOUT_FILENO, &format[i], 2);
 				i++;
 			}
 		}
