@@ -17,10 +17,8 @@ int _printf(const char *format, ...)
 {
 	char *arg_s;
 	char arg_c;
-	int arg_len = 0;
 	int i = 0;
 	ssize_t n_chars = 0;
-	char cur_c;
 	va_list ap;
 
 	if (format == NULL || (_strlen(format) == 1 && format[0] == '%'))
@@ -34,34 +32,23 @@ int _printf(const char *format, ...)
 			{
 				arg_c = va_arg(ap, int);
 				n_chars += write(STDOUT_FILENO, &arg_c, 1);
-				i++;
 			}
 			else if (format[i + 1] == 's')
 			{
 				arg_s = va_arg(ap, char*);
-				arg_len = _strlen(arg_s);
-				if (arg_len >= 0)
-					n_chars += write(STDOUT_FILENO, arg_s, arg_len);
+				if (_strlen(arg_s) >= 0)
+					n_chars += write(STDOUT_FILENO, arg_s, _strlen(arg_s));
 				else
 					n_chars += write(STDOUT_FILENO, "(null)", 6);
-				i++;
 			}
 			else if (format[i + 1] == '%')
-			{
 				n_chars += write(STDOUT_FILENO, "%", 1);
-				i++;
-			}
 			else
-			{
 				n_chars += write(STDOUT_FILENO, &format[i], 2);
-				i++;
-			}
+			i++;
 		}
 		else
-		{
-			cur_c = format[i];
-			n_chars += write(STDOUT_FILENO, &cur_c, 1);
-		}
+			n_chars += write(STDOUT_FILENO, &format[i], 1);
 		i++;
 	}
 	va_end(ap);
