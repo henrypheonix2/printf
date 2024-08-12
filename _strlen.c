@@ -6,7 +6,7 @@
  * _strlen - Computes the size of a given string.
  * @str: the given string.
  *
- * Returns: The size of the string.
+ * Return: The size of the string.
  */
 
 int _strlen(const char *str)
@@ -18,7 +18,7 @@ int _strlen(const char *str)
 	{
 		return (-1);
 	}
-	while (str[i] !='\0')
+	while (str[i] != '\0')
 	{
 		len++;
 		i++;
