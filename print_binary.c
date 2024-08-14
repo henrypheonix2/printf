@@ -1,25 +1,25 @@
 #include "main.h"
 
 /**
- * print_integer - Prints a given integer number in base 10.
+ * print_binary - Prints a given integer number in binary.
  * @num: the given integer number.
  *
  * Return: the number of printed characters.
  */
 
-int print_integer(int num)
+int print_binary(int num)
 {
 	int n_chars = 0;
 	int cur_digit = 0;
-	int num_digits[10];
+	int num_digits[128];
 	int num_len = 0;
 	int is_negative = (num < 0);
 	int i = 0;
 
 	while (num != 0)
 	{
-		num_digits[i] = (num % 10) * (num < 0 ? -1 : 1) + '0';
-		num /= 10;
+		num_digits[i] = (num % 2) * (num < 0 ? -1 : 1) + '0';
+		num /= 2;
 		num_len++;
 		i++;
 	}

@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
@@ -39,6 +35,11 @@ int handle_percent(const char *format, int idx, va_list ap)
 	{
 		arg_i = va_arg(ap, int);
 		n_chars += print_integer(arg_i);
+	}
+	else if (format[idx + 1] == 'b')
+	{
+		arg_i = va_arg(ap, int);
+		n_chars += print_binary(arg_i);
 	}
 	else if (format[idx + 1] == '%')
 		n_chars += write(STDOUT_FILENO, "%", 1);
