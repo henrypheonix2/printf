@@ -5,7 +5,7 @@
 #include "main.h"
 
 /**
- * _printf - produces output according to a format.
+ * _printf - Produces output according to a format.
  * @format: a character string represents the format string
  * which is composed of zero or more directives.
  *
