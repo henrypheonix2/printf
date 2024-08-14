@@ -17,8 +17,11 @@ int print_integer(int num)
 	int cur_digit = 0;
 	int num_digits[10];
 	int num_len = 0;
+	int is_negative = (num < 0);
 	int i = 0;
 
+	if (num < 0)
+		num *= -1;
 	while (num != 0)
 	{
 		num_digits[i] = num % 10 + '0';	
@@ -27,6 +30,8 @@ int print_integer(int num)
 		i++;
 	}
 	num_len--;
+	if (is_negative)
+		n_chars += write(STDOUT_FILENO, "-", 1);
 	while (num_len >= 0)
 	{
 		cur_digit = num_digits[num_len];
@@ -34,5 +39,7 @@ int print_integer(int num)
 		n_chars++;
 		num_len--;
 	}
+	if (n_chars == 0)
+		n_chars += write(STDOUT_FILENO, "0", 1);
 	return (n_chars);
 }
