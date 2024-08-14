@@ -5,11 +5,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <limits.h>
 
 int _printf(const char *format, ...);
 int handle_percent(const char *format, int idx, va_list ap);
 int print_integer(int num);
-int print_binary(int num);
+int print_binary(unsigned int num);
 int _strlen(const char *str);
 
 #endif

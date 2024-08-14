@@ -16,6 +16,7 @@ int handle_percent(const char *format, int idx, va_list ap)
 	char *arg_s;
 	char arg_c;
 	int arg_i;
+	unsigned int arg_u;
 	ssize_t n_chars = 0;
 
 	if (format[idx + 1] == 'c')
@@ -38,8 +39,8 @@ int handle_percent(const char *format, int idx, va_list ap)
 	}
 	else if (format[idx + 1] == 'b')
 	{
-		arg_i = va_arg(ap, int);
-		n_chars += print_binary(arg_i);
+		arg_u = va_arg(ap, int);
+		n_chars += print_binary(arg_u);
 	}
 	else if (format[idx + 1] == '%')
 		n_chars += write(STDOUT_FILENO, "%", 1);
