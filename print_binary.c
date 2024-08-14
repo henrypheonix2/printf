@@ -1,14 +1,16 @@
 #include "main.h"
 
 /**
- * print_binary - Prints a given integer number in binary.
- * @num: the given integer number.
+ * print_binary - Prints an unsigned integer number from the argument
+ * list in binary.
+ * @ap: the given argument list.
  *
  * Return: the number of printed characters.
  */
 
-int print_binary(unsigned int num)
+int print_binary(va_list ap)
 {
+	unsigned int num = va_arg(ap, unsigned int);
 	int n_chars = 0;
 	int cur_digit = 0;
 	int num_digits[128];

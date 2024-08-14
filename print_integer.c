@@ -1,14 +1,15 @@
 #include "main.h"
 
 /**
- * print_integer - Prints a given integer number in base 10.
- * @num: the given integer number.
+ * print_integer - Prints an integer number from the argument list in base 10.
+ * @ap: the given argument list.
  *
  * Return: the number of printed characters.
  */
 
-int print_integer(int num)
+int print_integer(va_list ap)
 {
+	int num = va_arg(ap, int);
 	int n_chars = 0;
 	int cur_digit = 0;
 	int num_digits[10];

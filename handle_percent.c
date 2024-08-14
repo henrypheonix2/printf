@@ -13,35 +13,16 @@
 
 int handle_percent(const char *format, int idx, va_list ap)
 {
-	char *arg_s;
-	char arg_c;
-	int arg_i;
-	unsigned int arg_u;
-	ssize_t n_chars = 0;
+	int n_chars = 0;
 
 	if (format[idx + 1] == 'c')
-	{
-		arg_c = va_arg(ap, int);
-		n_chars += write(STDOUT_FILENO, &arg_c, 1);
-	}
+		n_chars += print_char(ap);
 	else if (format[idx + 1] == 's')
-	{
-		arg_s = va_arg(ap, char*);
-		if (_strlen(arg_s) >= 0)
-			n_chars += write(STDOUT_FILENO, arg_s, _strlen(arg_s));
-		else
-			n_chars += write(STDOUT_FILENO, "(null)", 6);
-	}
+		n_chars += print_string(ap);
 	else if (format[idx + 1] == 'd' || format[idx + 1] == 'i')
-	{
-		arg_i = va_arg(ap, int);
-		n_chars += print_integer(arg_i);
-	}
+		n_chars += print_integer(ap);
 	else if (format[idx + 1] == 'b')
-	{
-		arg_u = va_arg(ap, int);
-		n_chars += print_binary(arg_u);
-	}
+		n_chars += print_binary(ap);
 	else if (format[idx + 1] == '%')
 		n_chars += write(STDOUT_FILENO, "%", 1);
 	else
