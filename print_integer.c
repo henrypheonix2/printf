@@ -22,7 +22,7 @@ int print_integer(int num)
 
 	while (num != 0)
 	{
-		num_digits[i] = (num % 10) * ((num % 10) < 0) + '0';	
+		num_digits[i] = (num % 10) * (num < 0 ? -1 : 1) + '0';
 		num /= 10;
 		num_len++;
 		i++;
