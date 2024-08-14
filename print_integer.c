@@ -15,13 +15,24 @@ int print_integer(int num)
 {
 	int n_chars = 0;
 	int cur_digit = 0;
+	int num_digits[10];
+	int num_len = 0;
+	int i = 0;
 
 	while (num != 0)
 	{
-		cur_digit = num % 10 + '0';
-		write(STDOUT_FILENO, &cur_digit, 1);
+		num_digits[i] = num % 10 + '0';	
 		num /= 10;
+		num_len++;
+		i++;
+	}
+	num_len--;
+	while (num_len >= 0)
+	{
+		cur_digit = num_digits[num_len];
+		write(STDOUT_FILENO, &cur_digit, 1);
 		n_chars++;
+		num_len--;
 	}
 	return (n_chars);
 }
