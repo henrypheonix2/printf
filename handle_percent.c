@@ -9,6 +9,8 @@
  * which represents a directive in a format.
  * @format: a character string represents the format string
  * which is composed of zero or more directives.
+ * @idx: the index of the current percent sign.
+ * @ap: the list of arguments of the _printf fucntion.
  *
  * Return: the number of printed characters.
  */
