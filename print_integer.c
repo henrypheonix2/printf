@@ -20,11 +20,9 @@ int print_integer(int num)
 	int is_negative = (num < 0);
 	int i = 0;
 
-	if (num < 0)
-		num *= -1;
 	while (num != 0)
 	{
-		num_digits[i] = num % 10 + '0';	
+		num_digits[i] = (num % 10) * ((num % 10) < 0) + '0';	
 		num /= 10;
 		num_len++;
 		i++;
