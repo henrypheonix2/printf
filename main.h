@@ -13,6 +13,9 @@ int print_integer(va_list ap);
 int print_binary(va_list ap);
 int print_char(va_list ap);
 int print_string(va_list ap);
+int print_unsigned(va_list ap);
+int print_octal(va_list ap);
+int print_hexa(va_list ap, int capital);
 int _strlen(const char *str);
 
 #endif
