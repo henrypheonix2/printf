@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * print_unsigned - Prints unsigned integer number from the argument
+ * print_unsigned_int - Prints unsigned integer number from the argument
  * list in base 10.
  * @ap: the given argument list.
  *
  * Return: the number of printed characters.
  */
 
-int print_unsigned(va_list ap)
+int print_unsigned_int(va_list ap)
 {
 	unsigned int num = va_arg(ap, unsigned int);
 	int n_chars = 0;

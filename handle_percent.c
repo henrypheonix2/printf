@@ -26,7 +26,7 @@ int handle_percent(const char *format, int idx, va_list ap)
 	else if (format[idx + 1] == 'b')
 		n_chars += print_binary(ap);
 	else if (format[idx + 1] == 'u')
-		n_chars += print_unsigned(ap);
+		n_chars += print_unsigned_int(ap);
 	else if (format[idx + 1] == 'o')
 		n_chars += print_octal(ap);
 	else if (format[idx + 1] == 'x' || format[idx + 1] == 'X')
