@@ -45,7 +45,7 @@ int print_custom_string(va_list ap)
 	}
 	buffer[j] = '\0';
 	if (_strlen(arg_s) >= 0)
-		n_chars += write(STDOUT_FILENO, buffer, j + 1);
+		n_chars += write(STDOUT_FILENO, buffer, _strlen(buffer));
 	else
 		n_chars += write(STDOUT_FILENO, "(null)", 6);
 	return (n_chars);
