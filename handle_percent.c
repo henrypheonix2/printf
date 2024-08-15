@@ -19,6 +19,8 @@ int handle_percent(const char *format, int idx, va_list ap)
 		n_chars += print_char(ap);
 	else if (format[idx + 1] == 's')
 		n_chars += print_string(ap);
+	else if (format[idx + 1] == 'S')
+		n_chars += print_custom_string(ap);
 	else if (format[idx + 1] == 'd' || format[idx + 1] == 'i')
 		n_chars += print_integer(ap);
 	else if (format[idx + 1] == 'b')
