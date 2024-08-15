@@ -31,6 +31,8 @@ int handle_percent(const char *format, int idx, va_list ap)
 		n_chars += print_octal(ap);
 	else if (format[idx + 1] == 'x' || format[idx + 1] == 'X')
 		n_chars += print_hexa(ap, format[idx + 1] == 'X');
+	else if (format[idx + 1] == 'p')
+		n_chars += print_address(ap);
 	else if (format[idx + 1] == '%')
 		n_chars += write(STDOUT_FILENO, "%", 1);
 	else
